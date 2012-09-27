@@ -1,0 +1,6 @@
+[submodule "modules/sensu"]
+	path = modules/sensu
+	url = https://github.com/sensu/sensu-puppet.git
+[submodule "modules/rabbitmq"]
+	path = modules/rabbitmq
+	url = git@github.com:KrisBuytaert/puppet-rabbitmq
