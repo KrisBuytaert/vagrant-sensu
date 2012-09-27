@@ -4,3 +4,6 @@
 [submodule "modules/rabbitmq"]
 	path = modules/rabbitmq
 	url = git@github.com:KrisBuytaert/puppet-rabbitmq
+[submodule "modules/redis"]
+	path = modules/redis
+	url = git@github.com:KrisBuytaert/puppet-redis.git
