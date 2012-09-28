@@ -7,3 +7,9 @@
 [submodule "modules/redis"]
 	path = modules/redis
 	url = git@github.com:KrisBuytaert/puppet-redis.git
+[submodule "other/ssl"]
+	path = other/ssl
+	url = git://github.com/joemiller/joemiller.me-intro-to-sensu.git
+[submodule "modules/concat"]
+	path = modules/concat
+	url = git://github.com/ripienaar/puppet-concat.git
