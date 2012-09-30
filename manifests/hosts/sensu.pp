@@ -19,7 +19,7 @@ node /sensu/ {
 
   rabbitmq::vhost {'/sensu':}
   rabbitmq::user {'sensu':
-    password => 'mypass';
+    password => 'sensu';
   }
 
   # Not sure if setting passwords works ..
@@ -27,11 +27,13 @@ node /sensu/ {
 
   rabbitmq::permission {'sensu':
     vhostpath => '/sensu',
-    conf      => ".*",
-    write     => ".*",
-    read      => ".*",
+    conf      => '.*',
+    write     => '.*',
+    read      => '.*',
   }
 
+  # Get SSL Stuff included
+  include rabbitmq::sslgenerate
 
   # Setup Redis
   require redis::params
@@ -40,11 +42,18 @@ node /sensu/ {
   include redis::config
   include redis::service
 
+
   # Setup Sensu
   include sensu::repo
-  include sensu::package
+  sensu::server {'localhost':
+    rabbitmq_password => 'sensu',
+  }
 
 
+
+  # sensu::handler
+
+  # sensu::server
 }
 
 
