@@ -5,10 +5,9 @@ Vagrant::Config.run do |config|
 
   config.vm.define :sensu do |sensu_config|
        sensu_config.vm.box = "Centos6"
-       sensu_config.vm.network  :hostonly, "10.42.42.51"
+       sensu_config.vm.network  :hostonly, "10.1.2.42"
        sensu_config.ssh.max_tries = 100
        sensu_config.vm.host_name = "sensu"
-       sensu_config.vm.forward_port  80, 8080
        sensu_config.vm.provision :puppet do |sensu_puppet|
        		sensu_puppet.pp_path = "/tmp/vagrant-puppet"
        		sensu_puppet.manifests_path = "manifests"
