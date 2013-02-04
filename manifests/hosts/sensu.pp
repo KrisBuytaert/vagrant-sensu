@@ -1,6 +1,6 @@
 
 
-node /sensu/ {
+node /^sensu/ {
 
   include my-repos
 
@@ -33,7 +33,7 @@ node /sensu/ {
   }
 
   # Get SSL Stuff included
-  include rabbitmq::sslgenerate
+  # include rabbitmq::sslgenerate
 
   # Setup Redis
   require redis::params
@@ -47,14 +47,35 @@ node /sensu/ {
   include sensu::repo
   sensu::server {'localhost':
     rabbitmq_password => 'sensu',
+    rabbitmq_port     => '5672',
+  }
+
+ 
+
+  sensu::client {'localhost':
+    rabbitmq_password => 'sensu',
+    rabbitmq_port     => '5672',
+    subscriptions     => 'test',
+  }
+
+
+  sensu::check {'cron':
+    command     => '/etc/sensu/plugins/processes/check-procs.rb -p crond -C 1',
+    handlers    => 'default',
+    subscribers => 'test',
+  }
+
+  package { 'sensu-community-plugins':
+    ensure => 'present',
+  }
+  package { 'rubygem-sensu-plugin':
+    ensure => 'present',
   }
 
 
 
-  # sensu::handler
-
-  # sensu::server
 }
+
 
 
 
