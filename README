@@ -1,7 +1,9 @@
-Notting to see here..
+This is actually a fully working Vagrant box that deploys
+a Sensu server with Redis, and rabbitmq
 
-Still fully in development.
-Don't expect any of this Vagrant box to actually work .. yet 
+Sets up 2 clients  and sets a check for the cron daemon.
+
+Expects a CentOS6 Basebox
 
 
 Current state : fought with SSL, ssl won, It's disabled now
