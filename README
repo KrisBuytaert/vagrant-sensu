@@ -7,3 +7,10 @@ Expects a CentOS6 Basebox
 
 
 Current state : fought with SSL, ssl won, It's disabled now
+
+
+Don't forget to git init the submodules
+(git submodule init ; git submodule update)
+
+All sensu plugins and handlers have been packaged using fpm and uploaded to our 
+monitoringlove rpm repository. 
